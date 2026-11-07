@@ -6,7 +6,7 @@ let current = null, cloudRecipes = [], posts = [], category = 'Усі', cloudRea
 let realtimeChannel;
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const isOwner = () => current?.email?.toLowerCase() === DEVELOPER_EMAIL;
-const allRecipes = () => cloudReady ? cloudRecipes : recipes;
+const allRecipes = () => cloudReady && cloudRecipes.length ? cloudRecipes : recipes;
 function notifyError(error) { console.error(error); alert(error?.message || 'Сталася помилка. Перевір з’єднання та налаштування Supabase.'); }
 function openModal(html){document.getElementById('modal').innerHTML=html;document.getElementById('modalBg').classList.add('open')}
 function closeModal(){document.getElementById('modalBg').classList.remove('open')}
